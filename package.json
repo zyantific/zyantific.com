@@ -10,7 +10,10 @@
   },
   "devDependencies": {
     "@astrojs/preact": "^0.5.2",
-    "astro": "^1.0.0-beta.73"
+    "@commitlint/cli": "^17.0.3",
+    "@commitlint/config-conventional": "^17.0.3",
+    "astro": "^1.0.0-beta.73",
+    "husky": "^8.0.1"
   },
   "dependencies": {
     "preact": "^10.7.3"
