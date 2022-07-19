@@ -14,11 +14,18 @@
     "@commitlint/cli": "^17.0.3",
     "@commitlint/config-conventional": "^17.0.3",
     "@tailwindcss/typography": "^0.5.4",
+    "@typescript-eslint/parser": "^5.30.7",
     "astro": "^1.0.0-beta.73",
     "daisyui": "^2.19.0",
-    "husky": "^8.0.1"
+    "eslint": "^8.20.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-astro": "^0.15.0",
+    "husky": "^8.0.1",
+    "prettier": "^2.7.1",
+    "prettier-plugin-astro": "^0.1.1"
   },
   "dependencies": {
+    "astro-eslint-parser": "^0.4.1",
     "preact": "^10.7.3"
   }
 }
