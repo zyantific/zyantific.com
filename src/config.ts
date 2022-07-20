@@ -2,12 +2,12 @@ import type { NavItems } from './types';
 
 export const NAV_ITEMS: NavItems = {
 	zydis: {
-		name: 'Zydis',
-		path: 'https://zydis.re/',
+		title: 'Zydis',
+		href: 'https://zydis.re/',
 	},
 	projects: {
-		name: 'Other Projects',
-		path: '/projects',
+		title: 'Other Projects',
+		href: '/projects',
 	},
 };
 

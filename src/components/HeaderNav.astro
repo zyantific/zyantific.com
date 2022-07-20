@@ -1,0 +1,13 @@
+---
+import { NAV_ITEMS } from '../config';
+---
+
+<div class='hidden md:flex text-lm-header-text dark:text-dm-header-text text-sm flex-shrink-0'>
+	<ul class='menu menu-horizontal p-0'>
+		{Object.keys(NAV_ITEMS).map((key) => (
+			<li>
+				<a href={NAV_ITEMS[key].href}>{NAV_ITEMS[key].title}</a>
+			</li>
+		))}
+	</ul>
+</div>

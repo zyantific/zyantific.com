@@ -3,6 +3,6 @@ export type NavItems = {
 };
 
 export type NavItem = {
-	name: string;
-	path: string;
+	title: string;
+	href: string;
 };
