@@ -1,62 +1,35 @@
 ---
-import BaseHead from "../components/BaseHead.astro";
-import Header from "../components/Header.astro";
-import BlogPostPreview from "../components/BlogPostPreview.astro";
+import BlogPostPreview from '../components/BlogPostPreview.astro';
+import BaseLayout from '../components/BaseLayout.astro';
 
-let title = "Example Blog";
-let description = "The perfect starter for your perfect blog.";
+let title = 'Example Blog';
+let description = 'The perfect starter for your perfect blog.';
 
 // Use Astro.glob to fetch all post with associated frontmatter
-const unsortedPosts = await Astro.glob("./posts/*.md");
+const unsortedPosts = await Astro.glob('./posts/*.md');
 const posts = unsortedPosts.sort(function (a, b) {
-	return (
-		new Date(b.frontmatter.publishDate).valueOf() - new Date(a.frontmatter.publishDate).valueOf()
-	);
+	return new Date(b.frontmatter.publishDate).valueOf() - new Date(a.frontmatter.publishDate).valueOf();
 });
 ---
 
-<html lang="en">
-	<head>
-		<BaseHead title={title} description={description} />
-	</head>
-
-	<body>
-		<Header />
-		<div class="wrapper">
-			<main class="content">
-				<section class="intro">
-					<h1>{title}</h1>
-					<p>{description}</p>
-				</section>
-				<section aria-label="Blog post list">
-					{posts.map(({ url, frontmatter }) => (
-						<BlogPostPreview
-							title={frontmatter.title}
-							description={frontmatter.description}
-							publishDate={frontmatter.publishDate}
-							url={url}
-						/>
-					))}
-				</section>
-			</main>
-		</div>
-	</body>
-</html>
-
-<style>
-	.content {
-		margin-top: 4rem;
-		margin-bottom: 8rem;
-	}
-
-	.intro {
-		padding-bottom: 4rem;
-		margin-bottom: 2rem;
-		border-bottom: 4px solid var(--theme-divider);
-	}
-
-	h1 {
-		font-size: 2.5rem;
-		font-weight: 700;
-	}
-</style>
+<BaseLayout title={title} description={description}>
+	<div class='mx-auto max-w-6xl px-2 md:px-6 lg:px-8 transition-all duration-200'>
+		<main class='content'>
+			<section class='intro'>
+				<h1 class='text-lm-heading dark:text-dm-heading mt-10 text-3xl'>Blog</h1>
+			</section>
+			<section aria-label='Blog post list' class='mt-6 space-y-6'>
+				{posts.map(({ url, frontmatter }) => (
+					<BlogPostPreview
+						title={frontmatter.title}
+						description={frontmatter.description}
+						publishDate={frontmatter.publishDate}
+						url={url}
+						author="testAuthor"
+						category={frontmatter.category}
+					/>
+				))}
+			</section>
+		</main>
+	</div>
+</BaseLayout>

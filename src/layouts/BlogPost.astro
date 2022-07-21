@@ -26,8 +26,11 @@ const {
 			<h1 class='title'>{title}</h1>
 			<time>{publishDate}</time>
 		</header>
-		<main>
-			<slot></slot>
-		</main>
+		<div class='flex justify-center'>
+			<main class='basis-[686px]'>
+				<slot></slot>
+			</main>
+			<aside class='basis-64 flex-grow-0 flex-shrink ml-auto hidden lg:block'>Table of Contents</aside>
+		</div>
 	</article>
 </BaseLayout>

@@ -1,0 +1,21 @@
+---
+export interface Props {
+	type: 'dev' | 'exploit' | 'misc' | 'release';
+}
+
+const { type } = Astro.props as Props;
+let classList = ['max-w-fit', 'px-2', 'py-[1px]', 'text-xs', 'rounded-sm', 'text-lm-background', 'shadow-md', 'font-bold'];
+if (type === 'dev') {
+	classList.push('bg-red', 'shadow-red/50');
+} else if (type === 'exploit') {
+	classList.push('bg-green', 'shadow-green/50');
+} else if (type === 'misc') {
+	classList.push('bg-blue', 'shadow-blue/50');
+} else if (type === 'release') {
+	classList.push('bg-yellow', 'shadow-yellow/50');
+}
+---
+
+<div class={classList.join(' ')}>
+	{type}
+</div>
