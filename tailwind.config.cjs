@@ -5,12 +5,13 @@ module.exports = {
 	theme: {
 		colors: {
 			// Brand Colors
-			primary: '#11E2FF',
+			brand: '#11E2FF',
 			// System Colors
 			red: '#EF4444',
 			green: '#22C55E',
 			blue: '#01D0FF',
 			yellow: '#FFBA08',
+			'text-faded': '#9397AD',
 			// Light-Mode Colors
 			'lm-heading': '#131022',
 			'lm-background': '#FBFBFB',
