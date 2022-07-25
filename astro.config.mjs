@@ -1,14 +1,15 @@
 import { defineConfig } from 'astro/config';
 import preact from '@astrojs/preact';
-
 import tailwind from '@astrojs/tailwind';
+
+import image from "@astrojs/image";
 
 // https://astro.build/config
 export default defineConfig({
-	integrations: [preact(), tailwind()],
-	vite: {
-		ssr: {
-			external: ['svgo'],
-		},
-	},
+  integrations: [preact(), tailwind(), image()],
+  vite: {
+    ssr: {
+      external: ['svgo']
+    }
+  }
 });
