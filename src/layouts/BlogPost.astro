@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../components/BaseLayout.astro';
+import { SITE } from '../config';
 
 export interface Props {
 	content: {
@@ -17,9 +18,16 @@ export interface Props {
 const {
 	content: { title, description, publishDate, creator, heroImage },
 } = Astro.props as Props;
+
+const meta = {
+	title: title,
+	description: description,
+	image: heroImage ? heroImage.src : SITE.image,
+	creator: creator,
+};
 ---
 
-<BaseLayout title={title} description={description} creator={creator} image={heroImage.src}>
+<BaseLayout meta={meta}>
 	<article class='prose prose-sm md:prose-base dark:prose-invert mx-auto max-w-6xl px-2 md:px-6 lg:px-8 transition-all duration-200'>
 		<header>
 			{heroImage && <img width="720" height="420" loading="lazy" src={heroImage.src} alt={heroImage.alt} />}

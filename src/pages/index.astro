@@ -1,9 +1,13 @@
 ---
 import BlogPostPreview from '../components/BlogPostPreview.astro';
 import BaseLayout from '../components/BaseLayout.astro';
+import { SITE } from '../config';
 
-let title = 'Example Blog';
-let description = 'The perfect starter for your perfect blog.';
+const meta = {
+	title: SITE.title,
+	description: SITE.description,
+	image: SITE.image,
+};
 
 // Use Astro.glob to fetch all post with associated frontmatter
 const unsortedPosts = await Astro.glob('./posts/*.md');
@@ -12,7 +16,7 @@ const posts = unsortedPosts.sort(function (a, b) {
 });
 ---
 
-<BaseLayout title={title} description={description}>
+<BaseLayout meta={meta}>
 	<div class='mx-auto max-w-6xl px-2 md:px-6 lg:px-8 transition-all duration-200'>
 		<main class='content'>
 			<section class='intro'>
