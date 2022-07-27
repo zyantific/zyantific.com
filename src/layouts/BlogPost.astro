@@ -1,5 +1,7 @@
 ---
+import Badge from '../components/Badge.astro';
 import BaseLayout from '../components/BaseLayout.astro';
+import type { Props as BadgeProps } from '../components/Badge.astro';
 import { SITE } from '../config';
 
 export interface Props {
@@ -8,6 +10,7 @@ export interface Props {
 		description: string;
 		publishDate: string;
 		creator: string;
+		category: 'dev' | 'exploit' | 'misc' | 'release';
 		heroImage?: {
 			src: string;
 			alt: string;
@@ -16,7 +19,7 @@ export interface Props {
 }
 
 const {
-	content: { title, description, publishDate, creator, heroImage },
+	content: { title, description, publishDate, creator, category, heroImage },
 } = Astro.props as Props;
 
 const meta = {
@@ -28,17 +31,35 @@ const meta = {
 ---
 
 <BaseLayout meta={meta}>
-	<article class='prose prose-sm md:prose-base dark:prose-invert mx-auto max-w-6xl px-2 md:px-6 lg:px-8 transition-all duration-200'>
+	<article class='prose prose-sm md:prose-base dark:prose-invert mx-auto max-w-6xl transition-all duration-200'>
 		<header>
-			{heroImage && <slot name="heroImage" />}
-			<h1 class='title'>{title}</h1>
-			<time>{publishDate}</time>
+			<div class='not-prose'>
+				<h1 class='font-bold text-[40px] text-lm-heading dark:text-dm-heading'>{title}</h1>
+				<div class='flex items-center space-x-4 mb-5'>
+					<Badge type={category} size={'large'} />
+					<time class='text-text-faded'>{publishDate}</time>
+				</div>
+			</div>
+			{heroImage && (
+				<div class="min-w-full">
+					<slot name="heroImage" />
+				</div>
+			)}
 		</header>
 		<div class='flex justify-center'>
-			<main class='basis-[686px]'>
+			<main class='basis-[686px] max-w-[686px] min-w-0'>
 				<slot></slot>
 			</main>
 			<aside class='basis-64 flex-grow-0 flex-shrink ml-auto hidden lg:block'>Table of Contents</aside>
 		</div>
 	</article>
 </BaseLayout>
+
+<style>
+	article > header :global(picture) {
+		@apply w-full h-[350px];
+	}
+	article > header :global(img) {
+		@apply w-full h-[350px] object-cover rounded-lg overflow-hidden;
+	}
+</style>
