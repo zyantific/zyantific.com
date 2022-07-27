@@ -2,6 +2,8 @@
 import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import hexagon from '/assets/Vector.svg';
+import hexagon2 from '/assets/Vector2.svg';
 import type { Props as BaseHeadProps } from '../components/BaseHead.astro';
 export interface Props {
 	meta: BaseHeadProps;
@@ -26,10 +28,20 @@ const { meta } = Astro.props;
 		</script>
 	</head>
 
-	<body class='bg-lm-background dark:bg-dm-background transition-colors duration-200'>
+	<body class='bg-lm-background dark:bg-dm-background transition-colors duration-200 relative h-[100vh] flex flex-col'>
 		<!-- <Header /> -->
 		<Header />
-		<slot></slot>
+		<div class='flex-auto !flex-shrink-0'>
+			<slot></slot>
+		</div>
+		<div class='absolute w-full h-full hidden lg:block pointer-events-none top-0'>
+			<div class='top-[64px] overflow-hidden z-0'>
+				<img src={hexagon} alt='' />
+			</div>
+			<div class='absolute right-0 bottom-80'>
+				<img src={hexagon2} alt='' class='bottom-0 right-0' />
+			</div>
+		</div>
 		<Footer />
 	</body>
 </html>
