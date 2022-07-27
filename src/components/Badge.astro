@@ -1,10 +1,20 @@
 ---
 export interface Props {
 	type: 'dev' | 'exploit' | 'misc' | 'release';
+	size: 'small' | 'medium' | 'large';
 }
 
-const { type } = Astro.props as Props;
-let classList = ['max-w-fit', 'px-2', 'py-[1px]', 'text-xs', 'rounded-sm', 'text-lm-background', 'shadow-md', 'font-bold'];
+const { type, size = 'small' } = Astro.props as Props;
+let classList = ['max-w-fit', 'text-lm-background', 'font-bold'];
+
+if (size === 'small') {
+	classList.push('px-2', 'py-[1px]', 'text-xs', 'rounded-sm', 'shadow-md');
+} else if (size === 'medium') {
+	classList.push('text-base');
+} else if (size === 'large') {
+	classList.push('px-7', 'py-1', 'text-md', 'rounded-md', 'shadow-lg');
+}
+
 if (type === 'dev') {
 	classList.push('bg-red', 'shadow-red/50');
 } else if (type === 'exploit') {
