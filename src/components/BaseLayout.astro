@@ -5,6 +5,7 @@ import Footer from '../components/Footer.astro';
 import hexagon from '/assets/Vector.svg';
 import hexagon2 from '/assets/Vector2.svg';
 import type { Props as BaseHeadProps } from '../components/BaseHead.astro';
+import Breadcrumbs from './Breadcrumbs.astro';
 export interface Props {
 	meta: BaseHeadProps;
 }
@@ -31,8 +32,11 @@ const { meta } = Astro.props;
 	<body class='bg-lm-background dark:bg-dm-background transition-colors duration-200 relative h-[100vh] flex flex-col'>
 		<!-- <Header /> -->
 		<Header />
-		<div class='flex-auto !flex-shrink-0'>
-			<slot></slot>
+		<div class='flex-auto !flex-shrink-0 z-10'>
+			<div class='mx-auto max-w-6xl px-2 md:px-6 lg:px-8 transition-all duration-200'>
+				<Breadcrumbs />
+				<slot></slot>
+			</div>
 		</div>
 		<div class='absolute w-full h-full hidden lg:block pointer-events-none top-0'>
 			<div class='top-[64px] overflow-hidden z-0'>

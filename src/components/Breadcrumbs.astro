@@ -1,0 +1,62 @@
+---
+const url = Astro.canonicalURL.pathname;
+console.log(url);
+
+const isHome = url === '/';
+const isPost = url.startsWith('/post');
+const isOtherSite = !isHome && !isPost;
+let postTitle = '';
+let siteTitle = '';
+if (isPost) {
+	postTitle = url.split('/')[2];
+}
+if (isOtherSite) {
+	siteTitle = url.split('/')[1];
+}
+---
+
+<div class='text-sm breadcrumbs text-text-faded max-w-6xl mx-auto mt-6'>
+	<ul>
+    {!isOtherSite ? (
+      isHome ? (
+        <li class='text-lm-body dark:text-dm-body'>
+				<a href="/">
+					<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="w-4 h-4 mr-2 stroke-lm-body dark:stroke-dm-body">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z" />
+					</svg>
+					Blog
+				</a>
+			</li>
+      ) : (
+        <li>
+				<a href="/">
+					<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="w-4 h-4 mr-2 stroke-text-faded">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z" />
+					</svg>
+					Blog
+				</a>
+			</li>
+      <li class='text-lm-body dark:text-dm-body'>
+				<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="w-4 h-4 mr-2 stroke-lm-body dark:stroke-dm-body">
+					<path
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						stroke-width="2"
+						d="M9 13h6m-3-3v6m5 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+					/>
+				</svg>
+				{postTitle}
+			</li>
+      )
+    ) : (
+      <li class='text-lm-body dark:text-dm-body'>
+				<a href="/">
+					<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="w-4 h-4 mr-2 stroke-lm-body dark:stroke-dm-body">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z" />
+					</svg>
+					{siteTitle}
+				</a>
+			</li>
+    )}
+	</ul>
+</div>

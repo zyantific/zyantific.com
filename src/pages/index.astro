@@ -17,24 +17,19 @@ const posts = nonDraftPosts.sort(function (a, b) {
 ---
 
 <BaseLayout meta={meta}>
-	<div class='mx-auto max-w-6xl px-2 md:px-6 lg:px-8 transition-all duration-200'>
-		<main class='content'>
-			<section class='intro'>
-				<h1 class='text-lm-heading dark:text-dm-heading mt-10 text-3xl'>Blog</h1>
-			</section>
-			<section aria-label='Blog post list' class='mt-6 space-y-6'>
-				{posts.map(({ url, frontmatter }) => (
-					<BlogPostPreview
-						title={frontmatter.title}
-						description={frontmatter.description}
-						publishDate={frontmatter.publishDate}
-						url={url}
-						author="testAuthor"
-						category={frontmatter.category}
-						image={frontmatter.heroImage.src}
-					/>
-				))}
-			</section>
-		</main>
-	</div>
+	<main class='content'>
+		<section aria-label='Blog post list' class='mt-6 space-y-6'>
+			{posts.map(({ url, frontmatter }) => (
+				<BlogPostPreview
+					title={frontmatter.title}
+					description={frontmatter.description}
+					publishDate={frontmatter.publishDate}
+					url={url}
+					author="testAuthor"
+					category={frontmatter.category}
+					image={frontmatter.heroImage.src}
+				/>
+			))}
+		</section>
+	</main>
 </BaseLayout>
