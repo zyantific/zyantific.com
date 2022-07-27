@@ -9,9 +9,9 @@ const meta = {
 	image: SITE.image,
 };
 
-// Use Astro.glob to fetch all post with associated frontmatter
 const unsortedPosts = await Astro.glob('./posts/*.md');
-const posts = unsortedPosts.sort(function (a, b) {
+const nonDraftPosts = unsortedPosts.filter((post) => !post.frontmatter.draft);
+const posts = nonDraftPosts.sort(function (a, b) {
 	return new Date(b.frontmatter.publishDate).valueOf() - new Date(a.frontmatter.publishDate).valueOf();
 });
 ---
