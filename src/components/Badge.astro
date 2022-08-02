@@ -5,14 +5,14 @@ export interface Props {
 }
 
 const { type, size = 'small' } = Astro.props as Props;
-let classList = ['max-w-fit', 'text-lm-background', 'font-bold'];
+let classList = ['max-w-fit', 'text-lm-background', 'font-semibold', 'capitalize'];
 
 if (size === 'small') {
 	classList.push('px-2', 'py-[1px]', 'text-xs', 'rounded-sm', 'shadow-md');
 } else if (size === 'medium') {
 	classList.push('text-base');
 } else if (size === 'large') {
-	classList.push('px-7', 'py-1', 'text-md', 'rounded-md', 'shadow-lg');
+	classList.push('px-7', 'py-2', 'text-sm', 'rounded-md', 'shadow-lg');
 }
 
 if (type === 'dev') {
