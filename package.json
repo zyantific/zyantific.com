@@ -29,6 +29,8 @@
   },
   "dependencies": {
     "astro-eslint-parser": "^0.4.1",
-    "preact": "^10.7.3"
+    "preact": "^10.7.3",
+    "rehype-autolink-headings": "^6.1.1",
+    "rehype-slug": "^5.0.1"
   }
 }

@@ -3,6 +3,8 @@ import Badge from '../components/Badge.astro';
 import BaseLayout from '../components/BaseLayout.astro';
 import type { Props as BadgeProps } from '../components/Badge.astro';
 import { SITE } from '../config';
+import TableOfContents from '../components/Sidebar/TableOfContents';
+import Sidebar from '../components/Sidebar/Sidebar.astro';
 
 export interface Props {
 	content: {
@@ -22,6 +24,10 @@ const {
 	content: { title, description, publishDate, creator, category, heroImage },
 } = Astro.props as Props;
 
+const { content } = Astro.props;
+
+const headers = content.astro.headers;
+
 const meta = {
 	title: title,
 	description: description,
@@ -31,13 +37,13 @@ const meta = {
 ---
 
 <BaseLayout meta={meta}>
-	<article class='prose prose-sm md:prose-base dark:prose-invert mx-auto max-w-6xl transition-all duration-200'>
+	<article class="prose prose-sm md:prose-base dark:prose-invert mx-auto max-w-6xl transition-all duration-200">
 		<header>
-			<div class='not-prose'>
-				<h1 class='font-bold text-[40px] text-lm-heading dark:text-dm-heading'>{title}</h1>
-				<div class='flex items-center space-x-4 mb-5'>
+			<div class="not-prose">
+				<h1 class="font-bold text-[40px] text-lm-heading dark:text-dm-heading">{title}</h1>
+				<div class="flex items-center space-x-4 mb-5">
 					<Badge type={category} size={'large'} />
-					<time class='text-text-faded'>{publishDate}</time>
+					<time class="text-text-faded">{publishDate}</time>
 				</div>
 			</div>
 			{heroImage && (
@@ -46,11 +52,13 @@ const meta = {
 				</div>
 			)}
 		</header>
-		<div class='flex justify-center'>
-			<main class='basis-[686px] max-w-[686px] min-w-0'>
-				<slot></slot>
+		<div class="flex justify-center">
+			<main class="basis-[686px] max-w-[686px] min-w-0">
+				<slot />
 			</main>
-			<aside class='basis-64 flex-grow-0 flex-shrink ml-auto hidden lg:block'>Table of Contents</aside>
+			<aside class="basis-64 flex-grow-0 flex-shrink ml-auto not-prose sticky h-fit top-0">
+				<Sidebar headers={headers} />
+			</aside>
 		</div>
 	</article>
 </BaseLayout>

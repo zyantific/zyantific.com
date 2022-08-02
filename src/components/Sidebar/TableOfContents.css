@@ -1,0 +1,19 @@
+.heading {
+	@apply font-bold uppercase;
+}
+
+.header-link {
+	@apply text-text-faded text-sm my-3;
+}
+
+.depth-2 {
+	@apply pl-4;
+}
+
+.depth-3 {
+	@apply pl-8;
+}
+
+.current-header-link {
+	@apply text-brand border-l-2;
+}

@@ -3,6 +3,7 @@ import preact from '@astrojs/preact';
 import tailwind from '@astrojs/tailwind';
 
 import image from '@astrojs/image';
+import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 
 // https://astro.build/config
 export default defineConfig({
@@ -14,5 +15,6 @@ export default defineConfig({
 	},
 	markdown: {
 		drafts: true,
+		rehypePlugins: ['rehype-slug', ['rehype-autolink-headings', { behavior: 'append' }]],
 	},
 });

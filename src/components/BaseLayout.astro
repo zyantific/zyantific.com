@@ -13,7 +13,7 @@ export interface Props {
 const { meta } = Astro.props;
 ---
 
-<html lang='en' class='dark'>
+<html lang='en' class='dark scroll-smooth'>
 	<head>
 		<BaseHead {...meta} />
 		<script is:inline>
@@ -24,7 +24,7 @@ const { meta } = Astro.props;
 				isDarkMode = false;
 			}
 
-			const theme = isDarkMode ? 'dark' : '';
+			const theme = isDarkMode ? 'dark scroll-smooth' : 'scroll-smooth';
 			document.querySelector('html').className = theme;
 		</script>
 	</head>
