@@ -9,7 +9,7 @@ const meta = {
 	image: SITE.image,
 };
 
-const unsortedPosts = await Astro.glob('./posts/*.md');
+const unsortedPosts = await Astro.glob('./posts/*.mdx');
 const nonDraftPosts = unsortedPosts.filter((post) => !post.frontmatter.draft);
 const posts = nonDraftPosts.sort(function (a, b) {
 	return new Date(b.frontmatter.publishDate).valueOf() - new Date(a.frontmatter.publishDate).valueOf();
@@ -17,17 +17,17 @@ const posts = nonDraftPosts.sort(function (a, b) {
 ---
 
 <BaseLayout meta={meta}>
-	<main class='content'>
-		<section aria-label='Blog post list' class='mt-6 space-y-6'>
-			{posts.map(({ url, frontmatter }) => (
+	<main class="content">
+		<section aria-label="Blog post list" class="mt-6 space-y-6">
+			{posts.map((post) => (
 				<BlogPostPreview
-					title={frontmatter.title}
-					description={frontmatter.description}
-					publishDate={frontmatter.publishDate}
-					url={url}
+					title={post.frontmatter.title}
+					description={post.frontmatter.description}
+					publishDate={post.frontmatter.publishDate}
+					url={post.url}
 					author="testAuthor"
-					category={frontmatter.category}
-					image={frontmatter.heroImage.src}
+					category={post.frontmatter.category}
+					heroImage={post.frontmatter.heroImage}
 				/>
 			))}
 		</section>

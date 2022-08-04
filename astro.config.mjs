@@ -1,20 +1,16 @@
 import { defineConfig } from 'astro/config';
 import preact from '@astrojs/preact';
 import tailwind from '@astrojs/tailwind';
-
 import image from '@astrojs/image';
-import rehypeAutolinkHeadings from 'rehype-autolink-headings';
+
+import mdx from '@astrojs/mdx';
 
 // https://astro.build/config
 export default defineConfig({
-	integrations: [preact(), tailwind(), image()],
+	integrations: [preact(), tailwind(), image(), mdx()],
 	vite: {
 		ssr: {
 			external: ['svgo'],
 		},
-	},
-	markdown: {
-		drafts: true,
-		rehypePlugins: ['rehype-slug', ['rehype-autolink-headings', { behavior: 'append' }]],
 	},
 });

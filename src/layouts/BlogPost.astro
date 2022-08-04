@@ -5,6 +5,8 @@ import type { Props as BadgeProps } from '../components/Badge.astro';
 import { SITE } from '../config';
 import TableOfContents from '../components/Sidebar/TableOfContents';
 import Sidebar from '../components/Sidebar/Sidebar.astro';
+import { Picture } from '@astrojs/image/components';
+import { blogImage } from '../util/images';
 
 export interface Props {
 	content: {
@@ -18,15 +20,17 @@ export interface Props {
 			alt: string;
 		};
 	};
+	headings: {
+		depth: number;
+		slug: string;
+		text: string;
+	}[];
 }
 
 const {
 	content: { title, description, publishDate, creator, category, heroImage },
+	headings,
 } = Astro.props as Props;
-
-const { content } = Astro.props;
-
-const headers = content.astro.headers;
 
 const meta = {
 	title: title,
@@ -34,6 +38,8 @@ const meta = {
 	image: heroImage ? heroImage.src : SITE.image,
 	creator: creator,
 };
+
+const heroImg = await blogImage(heroImage.src);
 ---
 
 <BaseLayout meta={meta}>
@@ -46,9 +52,9 @@ const meta = {
 					<time class="text-text-faded">{publishDate}</time>
 				</div>
 			</div>
-			{heroImage && (
+			{heroImg && (
 				<div class="min-w-full">
-					<slot name="heroImage" />
+					<Picture src={heroImg} alt="Telekom-Logo on a wall" aspectRatio={16 / 9} widths={[200, 400, 800]} sizes="(max-width: 800px) 100vw, 800px" />
 				</div>
 			)}
 		</header>
@@ -56,8 +62,8 @@ const meta = {
 			<main class="basis-[686px] max-w-[686px] min-w-0">
 				<slot />
 			</main>
-			<aside class="basis-64 flex-grow-0 flex-shrink ml-auto not-prose sticky h-fit top-0">
-				<Sidebar headers={headers} />
+			<aside class="basis-64 flex-grow-0 flex-shrink ml-auto not-prose sticky h-fit top-0 hidden sm:block">
+				<Sidebar headings={headings} />
 			</aside>
 		</div>
 	</article>

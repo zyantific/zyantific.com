@@ -1,9 +1,9 @@
 ---
 import TableOfContents from './TableOfContents';
 
-const { headers } = Astro.props;
+const { headings } = Astro.props;
 ---
 
 <nav>
-	{headers && <TableOfContents client:media="(min-width: 50em)" headers={headers} isMobile={false} />}
+	{headings && <TableOfContents client:media="(min-width: 50em)" headings={headings} isMobile={false} />}
 </nav>

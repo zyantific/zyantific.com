@@ -3,17 +3,17 @@ import { useState, useEffect, useRef } from 'preact/hooks';
 import './TableOfContents.css';
 
 interface Props {
-	headers: { depth: number; slug: string; text: string }[];
+	headings: { depth: number; slug: string; text: string }[];
 	labels?: {
 		onThisPage: string;
 	};
 	isMobile?: boolean;
 }
 
-const TableOfContents: FunctionalComponent<Props> = ({ headers = [], labels = { onThisPage: 'Table of Contents' }, isMobile }) => {
-	headers = [...headers].filter(({ depth }) => depth > 1 && depth < 4);
+const TableOfContents: FunctionalComponent<Props> = ({ headings = [], labels = { onThisPage: 'Table of Contents' }, isMobile }) => {
+	headings = [...headings].filter(({ depth }) => depth > 1 && depth < 4);
 	const toc = useRef<HTMLUListElement>();
-	const [currentID, setCurrentID] = useState(headers[0]?.slug);
+	const [currentID, setCurrentID] = useState(headings[0]?.slug);
 	const [open, setOpen] = useState(!isMobile);
 	const onThisPageID = 'on-this-page-heading';
 
@@ -28,7 +28,7 @@ const TableOfContents: FunctionalComponent<Props> = ({ headers = [], labels = { 
 	};
 
 	const HeadingContainer: preact.AnyComponent = ({ children }) => {
-		const currentHeading = headers.find(({ slug }) => slug === currentID);
+		const currentHeading = headings.find(({ slug }) => slug === currentID);
 		return isMobile ? (
 			<summary class="toc-mobile-header">
 				<div class="toc-mobile-header-content">
@@ -90,7 +90,7 @@ const TableOfContents: FunctionalComponent<Props> = ({ headers = [], labels = { 
 				</h2>
 			</HeadingContainer>
 			<ul ref={toc}>
-				{headers.map(({ depth, slug, text }) => (
+				{headings.map(({ depth, slug, text }) => (
 					<li class={`header-link depth-${depth} ${currentID === slug ? 'current-header-link' : ''}`.trim()}>
 						<a href={`#${slug}`} onClick={onLinkClick}>
 							{text}
