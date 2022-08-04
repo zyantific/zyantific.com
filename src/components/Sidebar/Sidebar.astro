@@ -1,9 +1,14 @@
 ---
 import TableOfContents from './TableOfContents';
+import type { Heading } from '../../layouts/BlogPost.astro';
 
-const { headings } = Astro.props;
+export interface Props {
+	headings: Heading[];
+}
+
+const { headings } = Astro.props as Props;
 ---
 
 <nav>
-	{headings && <TableOfContents client:media="(min-width: 50em)" headings={headings} isMobile={false} />}
+	<TableOfContents client:media="(min-width: 50em)" headings={headings} isMobile={false} />
 </nav>

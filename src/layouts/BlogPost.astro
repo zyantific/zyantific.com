@@ -3,7 +3,6 @@ import Badge from '../components/Badge.astro';
 import BaseLayout from '../components/BaseLayout.astro';
 import type { Props as BadgeProps } from '../components/Badge.astro';
 import { SITE } from '../config';
-import TableOfContents from '../components/Sidebar/TableOfContents';
 import Sidebar from '../components/Sidebar/Sidebar.astro';
 import { Picture } from '@astrojs/image/components';
 import { blogImage } from '../util/images';
@@ -20,11 +19,13 @@ export interface Props {
 			alt: string;
 		};
 	};
-	headings: {
-		depth: number;
-		slug: string;
-		text: string;
-	}[];
+	headings: Heading[];
+}
+
+export interface Heading {
+	depth: number;
+	slug: string;
+	text: string;
 }
 
 const {
@@ -63,7 +64,7 @@ const heroImg = await blogImage(heroImage.src);
 				<slot />
 			</main>
 			<aside class="basis-64 flex-grow-0 flex-shrink ml-auto not-prose sticky h-fit top-0 hidden sm:block">
-				<Sidebar headings={headings} />
+				{headings.length !== 0 && <Sidebar headings={headings} />}
 			</aside>
 		</div>
 	</article>
