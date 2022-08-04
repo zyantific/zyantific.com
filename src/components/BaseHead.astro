@@ -1,5 +1,6 @@
 ---
 import { SITE } from '../config';
+import '../styles/fonts.css';
 
 export interface Props {
 	title: string;
@@ -36,10 +37,6 @@ const { title = SITE.title, description, image = SITE.image, creator } = Astro.p
 <meta property="twitter:description" content={description} />
 <meta property="twitter:image" content={image} />
 {creator && <meta property="twitter:creator" content={creator} />}
-
-<!-- Fonts -->
-<link rel="preconnect" href="https://fonts.gstatic.com" />
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Edu+VIC+WA+NT+Beginner&family=Inter:wght@400;700&display=swap" />
 
 <script>
 	const isDark = document.documentElement.classList.contains('dark');
