@@ -1,7 +1,10 @@
 ---
 import Badge from './Badge.astro';
-import { Picture } from '@astrojs/image/components';
+import { Picture, Image } from '@astrojs/image/components';
 import { blogImage } from '../util/images';
+import { Author } from '../types';
+import { Authors } from '../config';
+import './BlogPostPreview.css';
 // import { GetImageTransform } from '@astrojs/image/dist/lib/get-image';
 
 export interface Props {
@@ -18,7 +21,8 @@ export interface Props {
 }
 
 const { title, description, publishDate, url, author, heroImage, category } = Astro.props as Props;
-
+const authorInfo = Authors[author] as Author;
+const authorImage = await blogImage(authorInfo.avatar);
 const img = await blogImage(heroImage.src);
 ---
 
@@ -27,8 +31,8 @@ const img = await blogImage(heroImage.src);
 		<article class="card rounded-lg sm:max-h-[270px] sm:card-side bg-lm-faded dark:bg-dm-faded shadow-xl transition-colors duration-200">
 			{img && (
 				<div class="m-4 rounded-lg overflow-hidden shrink-0">
-					<figure class="max-w-sm">
-						<Picture src={img} alt={'test'} aspectRatio={16 / 9} widths={[200, 400, 800]} sizes="(max-width: 800px) 100vw, 800px" />
+					<figure class="max-w-sm h-full">
+						<Picture class="heroImage w-full h-full" src={img} alt={heroImage.alt} aspectRatio={16 / 9} widths={[200, 400, 800]} sizes="(max-width: 800px) 100vw, 800px" />
 					</figure>
 				</div>
 			)}
@@ -41,12 +45,14 @@ const img = await blogImage(heroImage.src);
 				<p class="mt-2 text-md lg:line-clamp-3 line-clamp-2 flex-grow-0 text-lm-body dark:text-dm-body">{description}</p>
 				<div class="mt-auto flex items-center">
 					<div class="avatar mr-3">
-						<div class="w-8 rounded-full">
-							<!-- <img src={image} /> -->
-						</div>
+						{authorImage && (
+							<div class="w-8 rounded-full">
+								<Image src={authorImage} alt="avatar" width={32} height={32} format={'webp'} />
+							</div>
+						)}
 					</div>
 					<div>
-						<span class="text-sm text-lm-body dark:text-dm-body">{author}</span>
+						<span class="text-sm text-lm-body dark:text-dm-body">{authorInfo.name}</span>
 					</div>
 				</div>
 			</div>

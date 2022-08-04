@@ -4,7 +4,15 @@ async function loadImage(lazyFile: () => any) {
 }
 
 const blogImages = import.meta.glob('/src/assets/blog/*');
+const authorImages = import.meta.glob('/src/assets/avatars/*');
+
+const allImages = {
+	...blogImages,
+	...authorImages,
+};
+
+// console.log(allImages);
 
 export async function blogImage(pathname: string) {
-	return pathname in blogImages ? await loadImage(blogImages[pathname]) : undefined;
+	return pathname in allImages ? await loadImage(allImages[pathname]) : undefined;
 }
