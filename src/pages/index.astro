@@ -24,7 +24,7 @@ const posts = nonDraftPosts.sort(function (a, b) {
 					title={post.frontmatter.title}
 					description={post.frontmatter.description}
 					publishDate={post.frontmatter.publishDate}
-					url={post.url}
+					url={post.url != undefined ? post.url : ''}
 					author={post.frontmatter.author}
 					category={post.frontmatter.category}
 					heroImage={post.frontmatter.heroImage}

@@ -1,19 +1,19 @@
 ---
 import Badge from '@components/Badge.astro';
 import BaseLayout from '@components/BaseLayout.astro';
-import type { Props as BadgeProps } from '@components/Badge.astro';
+// import type { Props as BadgeProps } from '@components/Badge.astro';
 import { Authors, SITE } from '@config';
 import Sidebar from '@components/Sidebar/Sidebar.astro';
 import { Picture } from '@astrojs/image/components';
 import { blogImage } from '@util/images';
-import { Author } from '@types';
+import type { Author, Heading } from '@types';
 
 export interface Props {
 	content: {
 		title: string;
 		description: string;
 		publishDate: string;
-		creator: string;
+		author: string;
 		category: 'dev' | 'exploit' | 'misc' | 'release';
 		heroImage?: {
 			src: string;
@@ -23,25 +23,24 @@ export interface Props {
 	headings: Heading[];
 }
 
-export interface Heading {
-	depth: number;
-	slug: string;
-	text: string;
-}
-
 const {
-	content: { title, description, publishDate, creator, category, heroImage },
+	content: { title, description, publishDate, author, category, heroImage },
 	headings,
 } = Astro.props as Props;
+
+const authorInfo = Authors[author] as Author;
 
 const meta = {
 	title: title,
 	description: description,
 	image: heroImage ? heroImage.src : SITE.image,
-	creator: creator,
+	creator: authorInfo?.twitter,
 };
 
-const heroImg = await blogImage(heroImage.src);
+let heroImg;
+if (heroImage != undefined) {
+	heroImg = await blogImage(heroImage.src);
+}
 ---
 
 <BaseLayout meta={meta}>

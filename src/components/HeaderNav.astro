@@ -6,7 +6,7 @@ import { NAV_ITEMS } from '@config';
 	<ul class="menu menu-horizontal p-0">
 		{Object.keys(NAV_ITEMS).map((key) => (
 			<li>
-				<a href={NAV_ITEMS[key].href}>{NAV_ITEMS[key].title}</a>
+				<a href={NAV_ITEMS[key]?.href}>{NAV_ITEMS[key]?.title}</a>
 			</li>
 		))}
 	</ul>

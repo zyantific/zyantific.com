@@ -14,3 +14,8 @@ export type Author = {
 	twitter: string;
 	github: string;
 };
+export interface Heading {
+	depth: number;
+	slug: string;
+	text: string;
+}

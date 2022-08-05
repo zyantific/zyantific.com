@@ -4,8 +4,8 @@ const url = Astro.url.pathname;
 const isHome = url === '/';
 const isPost = url.startsWith('/post');
 const isOtherSite = !isHome && !isPost;
-let postTitle = '';
-let siteTitle = '';
+let postTitle
+let siteTitle
 if (isPost) {
 	postTitle = url.split('/')[2];
 }

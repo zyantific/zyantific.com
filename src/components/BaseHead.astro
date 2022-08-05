@@ -40,5 +40,5 @@ const { title = SITE.title, description, image = SITE.image, creator } = Astro.p
 
 <script>
 	const isDark = document.documentElement.classList.contains('dark');
-	document.querySelector('meta[name="theme-color"]').setAttribute('content', isDark ? '#191E2C' : '#FFFFFF');
+	document.querySelector('meta[name="theme-color"]')?.setAttribute('content', isDark ? '#191E2C' : '#FFFFFF');
 </script>

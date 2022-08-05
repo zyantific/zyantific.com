@@ -2,7 +2,7 @@
 import Badge from '@components/Badge.astro';
 import { Picture, Image } from '@astrojs/image/components';
 import { blogImage } from '@util/images';
-import { Author } from '@types';
+import type { Author } from '@types';
 import { Authors } from '@config';
 import '@components/BlogPostPreview.css';
 
@@ -22,7 +22,10 @@ export interface Props {
 const { title, description, publishDate, url, author, heroImage, category } = Astro.props as Props;
 const authorInfo = Authors[author] as Author;
 const authorImage = await blogImage(authorInfo.avatar);
-const img = await blogImage(heroImage.src);
+let img;
+if (heroImage != undefined) {
+	img = await blogImage(heroImage.src);
+}
 ---
 
 <div>
@@ -31,7 +34,14 @@ const img = await blogImage(heroImage.src);
 			{img && (
 				<div class="m-4 rounded-lg overflow-hidden shrink-0">
 					<figure class="max-w-sm h-full">
-						<Picture class="heroImage w-full h-full" src={img} alt={heroImage.alt} aspectRatio={16 / 9} widths={[200, 400, 800]} sizes="(max-width: 800px) 100vw, 800px" />
+						<Picture
+							class="heroImage w-full h-full"
+							src={img}
+							alt={heroImage != undefined ? heroImage.alt : ''}
+							aspectRatio={16 / 9}
+							widths={[200, 400, 800]}
+							sizes="(max-width: 800px) 100vw, 800px"
+						/>
 					</figure>
 				</div>
 			)}

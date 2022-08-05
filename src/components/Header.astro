@@ -1,7 +1,7 @@
 ---
 import { Icon } from 'astro-icon';
 import HeaderLogo from '@components/HeaderLogo.astro';
-import { NAV_ITEMS } from '@config';
+// import { NAV_ITEMS } from '@config';
 import HeaderNav from '@components/HeaderNav.astro';
 import ThemeSwitcher from '@components/ThemeSwitcher.astro';
 ---
@@ -65,10 +65,10 @@ import ThemeSwitcher from '@components/ThemeSwitcher.astro';
 	themeToggleBtn.addEventListener('change', function () {
 		if (themeToggleBtn.checked) {
 			document.documentElement.classList.add('dark');
-			document.querySelector('meta[name="theme-color"]').setAttribute('content', '#191E2C');
+			document.querySelector('meta[name="theme-color"]')?.setAttribute('content', '#191E2C');
 		} else {
 			document.documentElement.classList.remove('dark');
-			document.querySelector('meta[name="theme-color"]').setAttribute('content', '#FFFFFF');
+			document.querySelector('meta[name="theme-color"]')?.setAttribute('content', '#FFFFFF');
 		}
 		if (localStorage.getItem('color-theme')) {
 			if (localStorage.getItem('color-theme') === 'light') {
