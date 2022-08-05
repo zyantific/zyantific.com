@@ -1,11 +1,11 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
+import BaseHead from '@components/BaseHead.astro';
+import Header from '@components/Header.astro';
+import Footer from '@components/Footer.astro';
 import hexagon from '/assets/Vector.svg';
 import hexagon2 from '/assets/Vector2.svg';
-import type { Props as BaseHeadProps } from '../components/BaseHead.astro';
-import Breadcrumbs from './Breadcrumbs.astro';
+import type { Props as BaseHeadProps } from '@components/BaseHead.astro';
+import Breadcrumbs from '@components/Breadcrumbs.astro';
 export interface Props {
 	meta: BaseHeadProps;
 }
@@ -13,7 +13,7 @@ export interface Props {
 const { meta } = Astro.props;
 ---
 
-<html lang='en' class='dark scroll-smooth'>
+<html lang="en" class="dark scroll-smooth">
 	<head>
 		<BaseHead {...meta} />
 		<script is:inline>
@@ -29,21 +29,21 @@ const { meta } = Astro.props;
 		</script>
 	</head>
 
-	<body class='bg-lm-background dark:bg-dm-background transition-colors duration-200 relative h-[100vh] flex flex-col'>
+	<body class="bg-lm-background dark:bg-dm-background transition-colors duration-200 relative h-[100vh] flex flex-col">
 		<!-- <Header /> -->
 		<Header />
-		<div class='flex-auto !flex-shrink-0 z-10'>
-			<div class='mx-auto max-w-6xl px-2 md:px-6 lg:px-8 transition-all duration-200'>
+		<div class="flex-auto !flex-shrink-0 z-10">
+			<div class="mx-auto max-w-6xl px-2 md:px-6 lg:px-8 transition-all duration-200">
 				<Breadcrumbs />
-				<slot></slot>
+				<slot />
 			</div>
 		</div>
-		<div class='absolute w-full h-full hidden lg:block pointer-events-none top-0'>
-			<div class='top-[64px] overflow-hidden z-0'>
-				<img src={hexagon} alt='' />
+		<div class="absolute w-full h-full hidden lg:block pointer-events-none top-0">
+			<div class="top-[64px] overflow-hidden z-0">
+				<img src={hexagon} alt="" />
 			</div>
-			<div class='absolute right-0 bottom-80'>
-				<img src={hexagon2} alt='' class='bottom-0 right-0' />
+			<div class="absolute right-0 bottom-80">
+				<img src={hexagon2} alt="" class="bottom-0 right-0" />
 			</div>
 		</div>
 		<Footer />

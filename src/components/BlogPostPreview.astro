@@ -1,11 +1,10 @@
 ---
-import Badge from './Badge.astro';
+import Badge from '@components/Badge.astro';
 import { Picture, Image } from '@astrojs/image/components';
-import { blogImage } from '../util/images';
-import { Author } from '../types';
-import { Authors } from '../config';
-import './BlogPostPreview.css';
-// import { GetImageTransform } from '@astrojs/image/dist/lib/get-image';
+import { blogImage } from '@util/images';
+import { Author } from '@types';
+import { Authors } from '@config';
+import '@components/BlogPostPreview.css';
 
 export interface Props {
 	title: string;

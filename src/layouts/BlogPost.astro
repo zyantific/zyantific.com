@@ -1,11 +1,12 @@
 ---
-import Badge from '../components/Badge.astro';
-import BaseLayout from '../components/BaseLayout.astro';
-import type { Props as BadgeProps } from '../components/Badge.astro';
-import { SITE } from '../config';
-import Sidebar from '../components/Sidebar/Sidebar.astro';
+import Badge from '@components/Badge.astro';
+import BaseLayout from '@components/BaseLayout.astro';
+import type { Props as BadgeProps } from '@components/Badge.astro';
+import { Authors, SITE } from '@config';
+import Sidebar from '@components/Sidebar/Sidebar.astro';
 import { Picture } from '@astrojs/image/components';
-import { blogImage } from '../util/images';
+import { blogImage } from '@util/images';
+import { Author } from '@types';
 
 export interface Props {
 	content: {

@@ -11,8 +11,6 @@ const allImages = {
 	...authorImages,
 };
 
-// console.log(allImages);
-
 export async function blogImage(pathname: string) {
 	return pathname in allImages ? await loadImage(allImages[pathname]) : undefined;
 }

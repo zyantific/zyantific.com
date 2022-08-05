@@ -16,6 +16,15 @@
     "emitDeclarationOnly": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@components/*": ["src/components/*"],
+      "@layouts/*": ["src/layouts/*"],
+      "@types": ["src/types.ts"],
+      "@config": ["src/config.ts"],
+      "@util/*": ["src/util/*"],
+      "@styles/*": ["src/styles/*"]
+    }
   }
 }

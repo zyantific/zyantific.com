@@ -1,57 +1,59 @@
 ---
 import { Icon } from 'astro-icon';
-import HeaderLogo from './HeaderLogo.astro';
-import { NAV_ITEMS } from '../config';
-import HeaderNav from './HeaderNav.astro';
-import ThemeSwitcher from './ThemeSwitcher.astro';
+import HeaderLogo from '@components/HeaderLogo.astro';
+import { NAV_ITEMS } from '@config';
+import HeaderNav from '@components/HeaderNav.astro';
+import ThemeSwitcher from '@components/ThemeSwitcher.astro';
 ---
 
-<div class='shadow-lg z-10 relative bg-lm-faded dark:bg-dm-faded text-lm-header-text dark:text-dm-header-text transition-colors duration-200'>
-	<div class='
+<div class="shadow-lg z-10 relative bg-lm-faded dark:bg-dm-faded text-lm-header-text dark:text-dm-header-text transition-colors duration-200">
+	<div class="
   max-w-6xl
   mx-auto
   px-2
   md:px-6
-  lg:px-8'>
-		<div class='navbar px-0'>
-			<div class='navbar-start md:hidden'>
-				<div class='dropdown text-lm-header-text dark:text-dm-header-text bg-lm-background dark:bg-dm-background transition-colors duration-200'>
-					<label tabindex='0' class='btn btn-ghost lg:hidden'>
-						<svg xmlns='http://www.w3.org/2000/svg' class='h-5 w-5' fill='none' viewBox='0 0 24 24' stroke='currentColor'
-							><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M4 6h16M4 12h8m-8 6h16'></path>
+  lg:px-8">
+		<div class="navbar px-0">
+			<div class="navbar-start md:hidden">
+				<div class="dropdown text-lm-header-text dark:text-dm-header-text bg-lm-background dark:bg-dm-background transition-colors duration-200">
+					<label tabindex="0" class="btn btn-ghost lg:hidden">
+						<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+							><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16"></path>
 						</svg>
 					</label>
-					<ul tabindex='0' class='menu dropdown-content mt-3 p-2 shadow rounded-box w-[100vw] h-[100vh] !bg-lm-background dark:!bg-dm-background'>
+					<!-- <ul tabindex="0" class="menu dropdown-content mt-3 p-2 shadow rounded-box w-[100vw] h-[100vh] !bg-lm-background dark:!bg-dm-background">
 						<li><a>Item 1</a></li>
-						<li tabindex='0'>
-							<a class='justify-between'>
+						<li tabindex="0">
+							<a class="justify-between">
 								Parent
-								<svg class='fill-current' xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'
-									><path d='M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z'></path>
+								<svg class="fill-current" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+									><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z"></path>
 								</svg>
 							</a>
-							<ul class='p-2'>
+							<ul class="p-2">
 								<li><a>Submenu 1</a></li>
 								<li><a>Submenu 2</a></li>
 							</ul>
 						</li>
 						<li><a>Item 3</a></li>
-					</ul>
+					</ul> -->
 				</div>
 			</div>
-			<nav class='navbar-center md:navbar-start'>
-				<a href='/'>
+			<nav class="navbar-center md:navbar-start">
+				<a href="/">
 					<HeaderLogo />
 				</a>
 				<HeaderNav />
 			</nav>
-			<div class='navbar-end'>
+			<div class="navbar-end">
 				<ThemeSwitcher />
-				<button class='btn !border-0 px-3'>
-					<Icon name='akar-icons:rss' class='text-lm-header-text dark:text-dm-header-text w-5 h-5 transition-all duration-200' />
+				<button class="btn !border-0 px-3">
+					<Icon name="akar-icons:rss" class="text-lm-header-text dark:text-dm-header-text w-5 h-5 transition-all duration-200" />
+					<div class="sr-only">RSS Feed</div>
 				</button>
-				<button class='btn !border-0 px-3'>
-					<Icon name='ion:logo-github' class='text-lm-header-text dark:text-dm-header-text w-5 h-5 transition-all duration-200' />
+				<button class="btn !border-0 px-3">
+					<Icon name="ion:logo-github" class="text-lm-header-text dark:text-dm-header-text w-5 h-5 transition-all duration-200" />
+					<div class="sr-only">GitHub</div>
 				</button>
 			</div>
 		</div>

@@ -1,4 +1,4 @@
-import type { Author, NavItems } from './types';
+import type { Author, NavItems } from '@types';
 
 export const NAV_ITEMS: NavItems = {
 	zydis: {
