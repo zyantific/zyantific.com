@@ -23,9 +23,7 @@ const { meta } = Astro.props;
 			} else {
 				isDarkMode = false;
 			}
-
-			const theme = isDarkMode ? 'dark scroll-smooth' : 'scroll-smooth';
-			document.querySelector('html').className = theme;
+			document.querySelector('html').classList.toggle('dark', isDarkMode);
 		</script>
 	</head>
 
