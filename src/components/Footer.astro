@@ -1,6 +1,7 @@
 ---
 import logoDark from '/assets/logo/logo_dark_mono.svg';
 import logoLight from '/assets/logo/logo_light_mono.svg';
+import { SITE } from '@config';
 ---
 
 <footer class="text-sm text-text-faded mt-16 bg-lm-faded dark:bg-dm-faded">
@@ -14,12 +15,12 @@ import logoLight from '/assets/logo/logo_light_mono.svg';
 				<p>zyantific team development blog</p>
 			</div>
 			<div class="text-start">
-				<a class="text-brand hover:underline text-shadow" href="mailto:contact@zyantific.com">contact@zyantific.com</a>
+				<a class="text-brand hover:underline text-shadow" href={`mailto:${SITE.contact}`}>{SITE.contact}</a>
 			</div>
 		</div>
 		<ul class="flex flex-wrap items-center mb-6 text-gray-500 sm:mb-0 dark:text-gray-400">
 			<li>
-				<a href="https://github.com/zyantific" class="hover:underline text-brand">Zyantific</a>
+				<a href={SITE.github} class="hover:underline text-brand">Zyantific</a>
 			</li>
 		</ul>
 	</div>

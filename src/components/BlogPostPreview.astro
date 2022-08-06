@@ -9,7 +9,7 @@ import '@components/BlogPostPreview.css';
 export interface Props {
 	title: string;
 	description: string;
-	publishDate: string;
+	pubDate: string;
 	url: string;
 	author: string;
 	heroImage?: {
@@ -19,7 +19,7 @@ export interface Props {
 	category: 'dev' | 'exploit' | 'misc' | 'release';
 }
 
-const { title, description, publishDate, url, author, heroImage, category } = Astro.props as Props;
+const { title, description, pubDate, url, author, heroImage, category } = Astro.props as Props;
 const authorInfo = Authors[author] as Author;
 const authorImage = await blogImage(authorInfo.avatar);
 let img;
@@ -48,7 +48,7 @@ if (heroImage != undefined) {
 			<div class="card-body p-5">
 				<div class="flex items-center space-x-2">
 					<Badge type={category} size={'small'} />
-					<time class="text-xs text-lm-body dark:text-dm-body">{publishDate}</time>
+					<time class="text-xs text-lm-body dark:text-dm-body">{pubDate}</time>
 				</div>
 				<h2 class="mt-3 card-title text-[32px] text-lm-heading dark:text-dm-heading">{title}</h2>
 				<p class="mt-2 text-md lg:line-clamp-3 line-clamp-2 flex-grow-0 text-lm-body dark:text-dm-body">{description}</p>

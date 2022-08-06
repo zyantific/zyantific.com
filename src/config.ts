@@ -14,9 +14,11 @@ export const NAV_ITEMS: NavItems = {
 export const SITE = {
 	title: 'zyantific | zyantific team development blog',
 	description: 'zyantific team development blog',
-	url: 'https://zyantific.com',
+	// @ts-ignore - VITE BUG
+	url: import.meta.env.SITE_URL,
+	contact: 'contact@zyantific.com',
 	github: 'https://github.com/zyantific',
-	image: 'https://zyantific.com/images/logo.png',
+	image: '/assets/social.png',
 };
 
 export const Authors: { [key: string]: Author } = {

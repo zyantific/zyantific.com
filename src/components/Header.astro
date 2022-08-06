@@ -1,7 +1,7 @@
 ---
 import { Icon } from 'astro-icon';
 import HeaderLogo from '@components/HeaderLogo.astro';
-// import { NAV_ITEMS } from '@config';
+import { NAV_ITEMS, SITE } from '@config';
 import HeaderNav from '@components/HeaderNav.astro';
 import ThemeSwitcher from '@components/ThemeSwitcher.astro';
 ---
@@ -47,14 +47,14 @@ import ThemeSwitcher from '@components/ThemeSwitcher.astro';
 			</nav>
 			<div class="navbar-end">
 				<ThemeSwitcher />
-				<button class="btn !border-0 px-3">
+				<a href="/rss.xml" class="btn !border-0 px-3">
 					<Icon name="akar-icons:rss" class="text-lm-header-text dark:text-dm-header-text w-5 h-5 transition-all duration-200" />
 					<div class="sr-only">RSS Feed</div>
-				</button>
-				<button class="btn !border-0 px-3">
+				</a>
+				<a href={SITE.github} class="btn !border-0 px-3">
 					<Icon name="ion:logo-github" class="text-lm-header-text dark:text-dm-header-text w-5 h-5 transition-all duration-200" />
 					<div class="sr-only">GitHub</div>
-				</button>
+				</a>
 			</div>
 		</div>
 	</div>

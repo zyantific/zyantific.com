@@ -1,8 +1,8 @@
 ---
-layout: '../../layouts/BlogPost.astro'
+layout: '@layouts/BlogPost.astro'
 title: 'Hello static content!'
-description: "Bring your markdown, we'll handle the rest. Bring your markdown, we'll handle the rest. Bring your markdown, we'll handle the rest. Bring your markdown, we'll handle the rest Bring your markdown, we'll handle the rest. Bring your markdown, we'll handle the rest. Bring your markdown, we'll handle the rest. Bring your markdown, we'll handle the rest"
-publishDate: '11 Jul 2022'
+description: "Bring your markdown, we'll handle the rest. Bring your markdown, we'll handle the rest. Bring your markdown, we'll handle the rest"
+pubDate: '11 Jul 2022'
 category: 'misc'
 author: 'joel'
 draft: false
@@ -111,6 +111,27 @@ Make a change in your file and instantaneously see your updates!
 Open your favorite Terminal and run these commands.
 
 First Tab:
+
+```js
+const {
+	content: { title, description, pubDate, author, category, heroImage },
+	headings,
+} = Astro.props as Props;
+
+const authorInfo = Authors[author] as Author;
+
+const meta = {
+	title: title,
+	description: description,
+	image: heroImage ? heroImage.src : SITE.image,
+	creator: authorInfo?.twitter,
+};
+
+let heroImg;
+if (heroImage != undefined) {
+	heroImg = await blogImage(heroImage.src);
+}
+```
 
 ```sh
 node app

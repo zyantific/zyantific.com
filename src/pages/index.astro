@@ -12,7 +12,7 @@ const meta = {
 const unsortedPosts = await Astro.glob('./posts/*.mdx');
 const nonDraftPosts = unsortedPosts.filter((post) => !post.frontmatter.draft);
 const posts = nonDraftPosts.sort(function (a, b) {
-	return new Date(b.frontmatter.publishDate).valueOf() - new Date(a.frontmatter.publishDate).valueOf();
+	return new Date(b.frontmatter.pubDate).valueOf() - new Date(a.frontmatter.pubDate).valueOf();
 });
 ---
 
@@ -23,7 +23,7 @@ const posts = nonDraftPosts.sort(function (a, b) {
 				<BlogPostPreview
 					title={post.frontmatter.title}
 					description={post.frontmatter.description}
-					publishDate={post.frontmatter.publishDate}
+					pubDate={post.frontmatter.pubDate}
 					url={post.url != undefined ? post.url : ''}
 					author={post.frontmatter.author}
 					category={post.frontmatter.category}
