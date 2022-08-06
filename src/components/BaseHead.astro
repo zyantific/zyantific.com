@@ -38,7 +38,7 @@ const { title = SITE.title, description, image = SITE.image, creator } = Astro.p
 <meta property="twitter:image" content={image} />
 {creator && <meta property="twitter:creator" content={creator} />}
 
-<script>
+<script is:inline>
 	const isDark = document.documentElement.classList.contains('dark');
 	document.querySelector('meta[name="theme-color"]')?.setAttribute('content', isDark ? '#191E2C' : '#FFFFFF');
 </script>

@@ -59,8 +59,8 @@ import ThemeSwitcher from '@components/ThemeSwitcher.astro';
 		</div>
 	</div>
 </div>
-<script>
-	var themeToggleBtn = document.getElementById('theme-toggle') as HTMLInputElement;
+<script is:inline>
+	var themeToggleBtn = document.getElementById('theme-toggle');
 
 	themeToggleBtn.addEventListener('change', function () {
 		if (themeToggleBtn.checked) {
