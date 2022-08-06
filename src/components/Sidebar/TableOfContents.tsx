@@ -11,15 +11,19 @@ interface Props {
 }
 
 const TableOfContents: FunctionalComponent<Props> = ({ headings = [], labels = { onThisPage: 'Table of Contents' }, isMobile }) => {
+	interface Props {
+		children: any;
+	}
+
 	headings = [...headings].filter(({ depth }) => depth > 1 && depth < 4);
 	const toc = useRef<HTMLUListElement>();
 	const [currentID, setCurrentID] = useState(headings[0]?.slug);
 	const [open, setOpen] = useState(!isMobile);
 	const onThisPageID = 'on-this-page-heading';
 
-	const Container: preact.AnyComponent = ({ children }) => {
+	const Container = ({ children }: Props) => {
 		return isMobile ? (
-			<details {...{ open }} onToggle={(e) => setOpen(e.target.open)} class="toc-mobile-container">
+			<details {...{ open }} onToggle={(e: { target: any }) => setOpen(e.target!.open)} class="toc-mobile-container">
 				{children}
 			</details>
 		) : (
@@ -27,7 +31,7 @@ const TableOfContents: FunctionalComponent<Props> = ({ headings = [], labels = {
 		);
 	};
 
-	const HeadingContainer: preact.AnyComponent = ({ children }) => {
+	const HeadingContainer = ({ children }: Props) => {
 		const currentHeading = headings.find(({ slug }) => slug === currentID);
 		return isMobile ? (
 			<summary class="toc-mobile-header">
@@ -63,7 +67,7 @@ const TableOfContents: FunctionalComponent<Props> = ({ headings = [], labels = {
 		const observerOptions: IntersectionObserverInit = {
 			// Negative top margin accounts for `scroll-margin`.
 			// Negative bottom margin means heading needs to be towards top of viewport to trigger intersection.
-			rootMargin: '-150px 0% -66%',
+			rootMargin: '-20px 0px -66% 0px',
 			threshold: 1,
 		};
 
@@ -76,7 +80,7 @@ const TableOfContents: FunctionalComponent<Props> = ({ headings = [], labels = {
 		return () => headingsObserver.disconnect();
 	}, [toc.current]);
 
-	const onLinkClick = (e) => {
+	const onLinkClick = (e: { target: { getAttribute: (arg0: string) => string } }) => {
 		if (!isMobile) return;
 		setOpen(false);
 		setCurrentID(e.target.getAttribute('href').replace('#', ''));
