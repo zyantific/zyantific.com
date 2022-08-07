@@ -16,5 +16,4 @@ export const get = () =>
 		items: import.meta.glob('./posts/*.mdx'),
 		// (optional) inject custom xml
 		customData: `<language>en-us</language>`,
-		stylesheet: '/rss/styles.xsl',
 	});
