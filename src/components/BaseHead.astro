@@ -10,6 +10,13 @@ export interface Props {
 }
 
 const { title = SITE.title, description, image = SITE.image, creator } = Astro.props;
+let twitterHandle: string | undefined;
+
+if (creator) {
+	if (!twitterHandle?.startsWith('@')) {
+		twitterHandle = `@${twitterHandle}`;
+	}
+}
 ---
 
 <!-- Global Metadata -->
@@ -36,7 +43,7 @@ const { title = SITE.title, description, image = SITE.image, creator } = Astro.p
 <meta property="twitter:title" content={title} />
 <meta property="twitter:description" content={description} />
 <meta property="twitter:image" content={image} />
-{creator && <meta property="twitter:creator" content={creator} />}
+{twitterHandle && <meta property="twitter:creator" content={twitterHandle} />}
 
 <script is:inline>
 	const isDark = document.documentElement.classList.contains('dark');
