@@ -2,6 +2,7 @@
 import logoDark from '/assets/logo/logo_dark_mono.svg';
 import logoLight from '/assets/logo/logo_light_mono.svg';
 import { SITE } from '@config';
+import Icon from 'astro-icon';
 ---
 
 <footer class="text-sm text-text-faded mt-16 bg-lm-faded dark:bg-dm-faded">
@@ -20,7 +21,9 @@ import { SITE } from '@config';
 		</div>
 		<ul class="flex flex-wrap items-center mb-6 text-gray-500 sm:mb-0 dark:text-gray-400">
 			<li>
-				<a href={SITE.github} class="hover:underline text-brand">zyantific</a>
+				<a href={SITE.github} class="hover:underline text-brand inline-flex"
+					><Icon name="ion:logo-github" class="text-lm-header-text dark:text-dm-header-text w-5 h-5 transition-all duration-200 mr-1" />zyantific
+				</a>
 			</li>
 		</ul>
 	</div>
