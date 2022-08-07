@@ -11,4 +11,30 @@ heroImage:
   alt: 'Telekom-Logo on a wall'
 ---
 
-Test
+But let’s start from the beginning: Germany’s biggest ISP, Telekom, offers a hotspot service in cooperation with [Fon](https://fon.com/) where customers can access a few million hotspots worldwide. Customers can either pay a monthly fee or, if their Speedport router is supported, opt into the “WLAN TO GO” program for free access. If they do so, their Speedport will create a second, unsecured WiFi network which will prompt users for their login credentials when they join. All traffic seems to get tunneled through a bandwith-throttled proxy to some Telekom server to keep you out of trouble in case some dude decides to hack the NSA or something.
+
+![HotSpot Fon Radius](https://zyantific.com/assets/2017-02-17-bypassing-telekom-fon-hotspot-authentication/hotspotfonradius.png)
+
+All traffic? No. I discovered this “hidden” part of my router’s control panel which suspiciously looks like some sort of whitelist, right?
+
+It kinda makes sense if you think about it, huh? There should be some way to display the hotspot login and its related websites (based on the whitelisted domains, one could expect some support and payment sites). Judging from the `^` and `$`s, it’s pretty safe to assume we’re looking at regular expressions here. Writing proper RegExps can be hard enough already if you aren’t a Telekom engineer, but they surely are at least aware that dots represent wildcards and this is just a nicely printed RegExp, aren’t they? Well, the RegExp `^(.*\\.)?paypalobjects.com$` clearly shows that we’re seeing the actual regular expressions. Bonus points for the improperly escaped dot in this one domain.
+
+The next thing I obviosuly did was to scroll through the whitelist, looking for a `.de` domain (2€/year, who am I, Croesus?!) that wouldn’t trigger some corporate lawyer’s trademark protection instincts. Near the end of the list, I found something matching these criteria: `^www.hotspot.de$`. Roughly an hour later, I was able to call myself the proud owner of `wwwxhotspot.de`.
+
+![wwwxhotspot.de](https://zyantific.com/assets/2017-02-17-bypassing-telekom-fon-hotspot-authentication/wwwxhotspot.png)
+
+I fired up my laptop, established a connection to the hotspot, dismissed the login prompt and went on GitHub. Nothing, connection timeout, as expected. Next up, my newly acquired domain. Works.
+
+![Bypassed](https://zyantific.com/assets/2017-02-17-bypassing-telekom-fon-hotspot-authentication/bypassed.png)
+
+Bypassing authentication oddly enough also appeared to bypass the hotspot’s speed limit of 16 MBits.
+
+![Speedtest](https://zyantific.com/assets/2017-02-17-bypassing-telekom-fon-hotspot-authentication/speedtest.png)
+
+I obviously only tested this on my own router, VPN and domain and don’t endorse any abuse of this vulnerability. Always double-check your RegExps, especially when they serve as whitelist. I recommend [Debuggex](https://www.debuggex.com/), it makes finding issues in complex expressions a bliss.
+
+Let’s hope this vulnerability will be fixed soon, but considering Telekom’s [questionable stance on security](https://www.telekom.com/en/corporate-responsibility/data-protection-data-securit/security/security/closing-security-gaps-360054), I wouldn’t be surprised if they considered this a non-issue.
+
+**Update 20. Feb 2017:**
+
+A Telekom representative just contacted me, assuring me that, despite not being covered by their bug bounty program, they take such vulnerabilities very seriously. According to the mail, the issue was addressed in the past days and updated configurations have been pushed to all hotspot-enabled devices today. As opening a hotspot requires “EasySupport” (TR-069) to be enabled, no user action should be required for this vuln to be fixed. I can confirm that my device received an updated configuration that adds proper escaping for the RegExp wildcards, but being a little short on time today, haven’t looked at it thoroughly, yet.
