@@ -1,0 +1,36 @@
+---
+import Badge from '@components/Badge.astro';
+import BaseLayout from '@components/BaseLayout.astro';
+// import type { Props as BadgeProps } from '@components/Badge.astro';
+import { Authors, SITE } from '@config';
+import Sidebar from '@components/Sidebar/Sidebar.astro';
+import { Picture } from '@astrojs/image/components';
+import { blogImage } from '@util/images';
+import type { Author, Heading } from '@types';
+
+export interface Props {
+	content: {
+		title: string;
+		description?: string;
+	};
+}
+
+const {
+	content: { title, description },
+} = Astro.props as Props;
+
+const meta = {
+	title: title,
+	description: description || SITE.description,
+};
+---
+
+<BaseLayout meta={meta}>
+	<main class="prose prose-sm md:prose-base dark:prose-invert mx-auto max-w-6xl transition-all duration-200">
+		<slot />
+	</main>
+</BaseLayout>
+
+<style>
+
+</style>
