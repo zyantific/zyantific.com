@@ -32,7 +32,45 @@ module.exports = {
 		fontFamily: {
 			sans: ['Inter', 'sans-serif'],
 		},
-		extend: {},
+		extend: {
+			typography: {
+				DEFAULT: {
+					css: {
+						pre: {
+							fontSize: '1rem',
+						},
+					},
+				},
+				sm: {
+					css: {
+						pre: {
+							fontSize: '1rem',
+						},
+					},
+				},
+				md: {
+					css: {
+						pre: {
+							fontSize: '1rem',
+						},
+					},
+				},
+				lg: {
+					css: {
+						pre: {
+							fontSize: '1rem',
+						},
+					},
+				},
+				base: {
+					css: {
+						pre: {
+							fontSize: '1rem',
+						},
+					},
+				},
+			},
+		},
 	},
 	plugins: [require('@tailwindcss/typography'), require('@tailwindcss/line-clamp'), require('daisyui')],
 	daisyui: {
