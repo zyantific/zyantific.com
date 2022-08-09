@@ -3,6 +3,7 @@ import preact from '@astrojs/preact';
 import tailwind from '@astrojs/tailwind';
 import image from '@astrojs/image';
 import mdx from '@astrojs/mdx';
+import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
@@ -13,7 +14,7 @@ export default defineConfig({
 			theme: JSON.parse(fs.readFileSync('./src/styles/shiki-theme.json', 'utf-8')),
 		},
 	},
-	integrations: [preact(), tailwind(), image(), mdx()],
+	integrations: [preact(), tailwind(), image(), mdx(), sitemap()],
 	vite: {
 		ssr: {
 			external: ['svgo'],
