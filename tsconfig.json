@@ -33,6 +33,8 @@
     "types": ["@astrojs/image/client"],
     // Tell TypeScript where your build output is
     "outDir": "./dist",
+    "jsx": "react-jsx",
+    "jsxImportSource": "preact",
     "baseUrl": ".",
     "paths": {
       "@components/*": ["src/components/*"],

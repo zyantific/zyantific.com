@@ -3,16 +3,11 @@ import { Icon } from 'astro-icon';
 import HeaderLogo from '@components/HeaderLogo.astro';
 import { NAV_ITEMS, SITE } from '@config';
 import HeaderNav from '@components/HeaderNav.astro';
-import ThemeSwitcher from '@components/ThemeSwitcher.astro';
+import ThemeToggle from '@components/ThemeToggle';
 ---
 
 <div class="shadow-lg z-10 relative bg-lm-faded dark:bg-dm-faded text-lm-header-text dark:text-dm-header-text transition-colors duration-200">
-	<div class="
-  max-w-6xl
-  mx-auto
-  px-2
-  md:px-6
-  lg:px-8">
+	<div class="max-w-6xl mx-auto px-2 md:px-6 lg:px-8">
 		<div class="navbar px-0">
 			<div class="navbar-start md:hidden">
 				<div class="dropdown text-lm-header-text dark:text-dm-header-text bg-lm-background dark:bg-dm-background transition-colors duration-200">
@@ -46,12 +41,12 @@ import ThemeSwitcher from '@components/ThemeSwitcher.astro';
 				<HeaderNav />
 			</nav>
 			<div class="navbar-end">
-				<ThemeSwitcher />
+				<!-- <ThemeSwitcher /> -->
+				<ThemeToggle client:visible />
 				<a href="/rss.xml" class="btn !border-0 px-3">
 					<Icon name="akar-icons:rss" class="text-lm-header-text dark:text-dm-header-text w-5 h-5 transition-all duration-200" />
 					<div class="sr-only">RSS Feed</div>
-				</a>
-				<a href={SITE.github} class="btn !border-0 px-3">
+				</a><a href={SITE.github} class="btn !border-0 px-3">
 					<Icon name="ion:logo-github" class="text-lm-header-text dark:text-dm-header-text w-5 h-5 transition-all duration-200" />
 					<div class="sr-only">GitHub</div>
 				</a>
@@ -60,32 +55,5 @@ import ThemeSwitcher from '@components/ThemeSwitcher.astro';
 	</div>
 </div>
 <script is:inline>
-	var themeToggleBtn = document.getElementById('theme-toggle');
 
-	themeToggleBtn.addEventListener('change', function () {
-		if (themeToggleBtn.checked) {
-			document.documentElement.classList.add('dark');
-			document.querySelector('meta[name="theme-color"]')?.setAttribute('content', '#191E2C');
-		} else {
-			document.documentElement.classList.remove('dark');
-			document.querySelector('meta[name="theme-color"]')?.setAttribute('content', '#FFFFFF');
-		}
-		if (localStorage.getItem('color-theme')) {
-			if (localStorage.getItem('color-theme') === 'light') {
-				document.documentElement.classList.add('dark');
-				localStorage.setItem('color-theme', 'dark');
-			} else {
-				document.documentElement.classList.remove('dark');
-				localStorage.setItem('color-theme', 'light');
-			}
-		} else {
-			if (document.documentElement.classList.contains('dark')) {
-				document.documentElement.classList.remove('dark');
-				localStorage.setItem('color-theme', 'light');
-			} else {
-				document.documentElement.classList.add('dark');
-				localStorage.setItem('color-theme', 'dark');
-			}
-		}
-	});
 </script>

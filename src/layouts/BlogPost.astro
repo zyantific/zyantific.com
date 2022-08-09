@@ -7,6 +7,7 @@ import Sidebar from '@components/Sidebar/Sidebar.astro';
 import { Picture } from '@astrojs/image/components';
 import { blogImage } from '@util/images';
 import type { Author, Heading } from '@types';
+import '../styles/shiki.css';
 
 export interface Props {
 	content: {
@@ -46,8 +47,8 @@ if (heroImage != undefined) {
 <BaseLayout meta={meta}>
 	<article class="prose prose-sm md:prose-base dark:prose-invert mx-auto max-w-6xl transition-all duration-200">
 		<header>
-			<div class="not-prose">
-				<h1 class="font-bold text-[40px] text-lm-heading dark:text-dm-heading">{title}</h1>
+			<div class="not-prose sm:mt-0 mt-6">
+				<h1 class="font-bold text-2xl sm:text-[40px] sm:leading-tight leading:normal text-lm-heading dark:text-dm-heading mb-3">{title}</h1>
 				<div class="flex items-center space-x-4 mb-5">
 					<Badge type={category} size={'large'} />
 					<time class="text-text-faded">{pubDate}</time>

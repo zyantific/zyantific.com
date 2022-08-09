@@ -10,6 +10,10 @@ export interface Props {
 }
 
 const { title = SITE.title, description, image = SITE.image, creator } = Astro.props;
+// const imageRelativePath = image.replace(/^\/src/, '');
+// const imageUrl = `${SITE.url}${imageRelativePath}`;
+// console.log(imageUrl);
+
 let twitterHandle: string | undefined;
 
 if (creator) {
@@ -46,6 +50,16 @@ if (creator) {
 {twitterHandle && <meta property="twitter:creator" content={twitterHandle} />}
 
 <script is:inline>
-	const isDark = document.documentElement.classList.contains('dark');
-	document.querySelector('meta[name="theme-color"]')?.setAttribute('content', isDark ? '#191E2C' : '#FFFFFF');
+	const root = document.documentElement;
+	const theme = localStorage.getItem('color-theme');
+	const metaTheme = document.querySelector('meta[name="theme-color"]');
+	if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+		root.classList.add('dark');
+		localStorage.setItem('color-theme', 'dark');
+		metaTheme.setAttribute('content', '#191E2C');
+	} else {
+		root.classList.remove('dark');
+		localStorage.setItem('color-theme', 'light');
+		metaTheme.setAttribute('content', '#FFFFFF');
+	}
 </script>
