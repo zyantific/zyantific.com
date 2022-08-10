@@ -15,5 +15,5 @@
 }
 
 .current-header-link {
-	@apply text-brand border-l-2;
+	@apply text-brand-darker dark:text-brand border-l-2;
 }

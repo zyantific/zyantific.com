@@ -79,7 +79,7 @@ pre.shiki div.line {
 
 /** Don't show the language identifiers */
 pre.shiki .language-id {
-	@apply absolute text-text-faded -top-3 right-3 text-xs font-bold bg-dm-faded py-2 px-2 rounded-md uppercase shadow-md;
+	@apply absolute text-text-faded -top-3 right-3 text-xs font-bold bg-lm-faded dark:bg-dm-faded py-2 px-2 rounded-md uppercase shadow-md;
 }
 
 /* Visually differentiates twoslash code samples  */
