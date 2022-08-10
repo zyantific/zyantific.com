@@ -29,9 +29,9 @@ module.exports = {
 			'dm-body': '#D4D7E5',
 			'dm-faded': '#191E2C',
 		},
-		fontFamily: {
-			sans: ['Inter', 'sans-serif'],
-		},
+		// fontFamily: {
+		// 	sans: ['ui-sans-serif', 'system-ui'],
+		// },
 		extend: {
 			typography: {
 				DEFAULT: {
@@ -77,3 +77,8 @@ module.exports = {
 		themes: [],
 	},
 };
+
+// Credit Card Number: 5235 2905 5037 6639
+// Expiration Date: 08/29
+// CVC: 907
+// Name On The Card: Emir Arcan Polat
