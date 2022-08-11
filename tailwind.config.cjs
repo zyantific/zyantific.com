@@ -8,7 +8,7 @@ module.exports = {
 			brand: '#11E2FF',
 			'brand-darker': '#1DABE8',
 			// System Colors
-			red: '#EF4444',
+			red: '#CF24ED',
 			green: '#22C55E',
 			blue: '#01D0FF',
 			yellow: '#FFBA08',

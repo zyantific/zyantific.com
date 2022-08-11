@@ -3,9 +3,12 @@ layout: '@layouts/BlogPost.astro'
 title: 'Identifying library code in statically linked binaries'
 description: 'To get started, you need to acquire the the FLAIR toolkit from Hex-Rays’ download-page.'
 pubDate: '1 Apr 2014'
-category: 'misc'
+category: 'dev'
 author: 'joel'
 draft: false
+heroImage:
+  src: '/src/assets/blog/ident-library-code.png'
+  alt: 'F.L.I.R.T Text on Background'
 ---
 
 To get started, you need to acquire the the FLAIR toolkit from Hex-Rays’ download-page. Extract it wherever you want and spawn a CMD in the newly created directory, then CD to bin\win. Let’s assume you found out that your target binary is using MS Detours, however you are unsure of what specific version. That’s no problem, as FLIRT signatures allow you to generate signatures from several libraries and compile them into a single .sig file with ease, which also makes sense in regards of reusability. For the sake of this article, I downloaded version 1.5 and 2.1 of the express edition of MS detours from the Microsoft website. You now go on by generating a .pat (pattern) file from each static library you want to include in the signature file using the pcf tool. Some .lib files (which are effectively just a package of .obj files) that contain empty .objs seem to cause some trouble for the pattern generator, which makes it necessary to provide the -s switch (skip erroneous). After that, you run sigmake to generate a signature file from the pattern files. For a detailed description on the arguments of sigmake, take a look into sigmake.txt in the root of the FLAIR toolkit.

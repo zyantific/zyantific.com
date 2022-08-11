@@ -6,6 +6,9 @@ pubDate: '15 Dec 2014'
 category: 'misc'
 author: 'joel'
 draft: false
+heroImage:
+  src: '/src/assets/blog/dumping-packed-executables.png'
+  alt: 'Illustration: Dumping packed executables using minidumps'
 ---
 
 Usage:
@@ -99,7 +102,7 @@ print 'Done!'
 
 Usage:
 
-```sh
+```ps
 > .load pykd.pyd
 > !py C:\my\script\path\dump_mods.py <output-dir> <module1> [<module2> [...]]
 
@@ -257,7 +260,7 @@ print 'Leaving ..'
 
 Example usage:
 
-```sh
+```ps
 > .load pykd.pyd
 > !py C:\my\script\path\fix_iat.py <IAT-start-addr> <IAT-end-addr> C:\my\fancy\out\path\batch.idc
 
