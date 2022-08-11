@@ -10,9 +10,9 @@ export interface Props {
 }
 
 const { title = SITE.title, description, image = SITE.image, creator } = Astro.props;
-// const imageRelativePath = image.replace(/^\/src/, '');
-// const imageUrl = `${SITE.url}${imageRelativePath}`;
-// console.log(imageUrl);
+
+const imageRelativePath = image.replace(/^\/src/, '');
+const imageUrl = `${SITE.url}${imageRelativePath}`;
 
 let twitterHandle: string | undefined;
 
@@ -39,14 +39,14 @@ if (creator) {
 <meta property="og:url" content={Astro.url} />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
-<meta property="og:image" content={image} />
+<meta property="og:image" content={imageUrl} />
 
 <!-- Twitter -->
 <meta property="twitter:card" content="summary_large_image" />
 <meta property="twitter:url" content={Astro.url} />
 <meta property="twitter:title" content={title} />
 <meta property="twitter:description" content={description} />
-<meta property="twitter:image" content={image} />
+<meta property="twitter:image" content={imageUrl} />
 {twitterHandle && <meta property="twitter:creator" content={twitterHandle} />}
 
 <script is:inline>
