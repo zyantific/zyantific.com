@@ -30,7 +30,7 @@ target executable in a VM and cause a bluescreen to obtain a crash-dump (a few
 additional steps would be required here). The obtained minidump can then be
 processed for further analysis using WinDBG.
 
-Usage:
+## Dumping
 
 - Create minidump using task-manager (Details -> Rightclick on target process -> Create Dump File)
 - Load dump into kd/WinDBG (in case you do not have it at hand already, obtain it here)
@@ -44,6 +44,8 @@ This is required because many packers tend to set incorrect values for
 SizeOfRawData as it is rarely accessed after the loader is done with it's work,
 however when remapping or loading it into software like IDA, incorrect values
 result in truncated/messed up sections if not fixed.
+
+## Fixing up the Executable
 
 To perform some automation for more convenience, I wrote the following
 PyKD-script that extracts arbitrary modules from a dump:
@@ -305,6 +307,10 @@ only works because Themida currently only generates unconditional branches in
 these stubs. It's also possible to completely defeat the API redirects, however
 this is more complex and beyond the scope of this article.
 
-**Update 16.Dec.2014:** Fixed dumps_mods.py to also work with WinDBG x86.
+## Update 16.Dec.2014 
 
-**Update 12.Jan.2015:** Updated dump_mods.py to be more generic.
+Fixed `dumps_mods.py` to also work with WinDBG x86.
+
+## Update 12.Jan.2015
+
+Updated `dump_mods.py` to be more generic.

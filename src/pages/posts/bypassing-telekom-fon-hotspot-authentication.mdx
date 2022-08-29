@@ -28,8 +28,10 @@ NSA or something.
 
 ![HotSpot Fon Radius](https://zyantific.com/assets/2017-02-17-bypassing-telekom-fon-hotspot-authentication/hotspotfonradius.png)
 
-All traffic? No. I discovered this “hidden” part of my router's control panel
-which suspiciously looks like some sort of whitelist, right?
+## All traffic?
+
+No. I discovered this “hidden” part of my router's control panel which
+suspiciously looks like some sort of whitelist, right?
 
 It kinda makes sense if you think about it, huh? There should be some way to
 display the hotspot login and its related websites (based on the whitelisted
@@ -40,6 +42,8 @@ engineer, but they surely are at least aware that dots represent wildcards and
 this is just a nicely printed RegExp, aren't they? Well, the RegExp
 `^(.*\\.)?paypalobjects.com$` clearly shows that we're seeing the actual regular
 expressions. Bonus points for the improperly escaped dot in this one domain.
+
+## Buying a Domain
 
 The next thing I obviosuly did was to scroll through the whitelist, looking for
 a `.de` domain (2€/year, who am I, Croesus?!) that wouldn't trigger some
@@ -52,6 +56,8 @@ later, I was able to call myself the proud owner of `wwwxhotspot.de`.
 I fired up my laptop, established a connection to the hotspot, dismissed the
 login prompt and went on GitHub. Nothing, connection timeout, as expected. Next
 up, my newly acquired domain. Works.
+
+## Connection Established
 
 ![Bypassed](https://zyantific.com/assets/2017-02-17-bypassing-telekom-fon-hotspot-authentication/bypassed.png)
 
@@ -70,7 +76,7 @@ Let's hope this vulnerability will be fixed soon, but considering Telekom's
 security](https://www.telekom.com/en/corporate-responsibility/data-protection-data-securit/security/security/closing-security-gaps-360054),
 I wouldn't be surprised if they considered this a non-issue.
 
-**Update 20. Feb 2017:**
+## Update 20. Feb 2017
 
 A Telekom representative just contacted me, assuring me that, despite not being
 covered by their bug bounty program, they take such vulnerabilities very

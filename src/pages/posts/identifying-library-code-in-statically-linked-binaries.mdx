@@ -28,6 +28,8 @@ the fact that IDA uses to apply some sort of compiler specific signatures to
 binaries, a lot of them don't know that you can generate these signature files
 from any static library yourself without too much effort.
 
+## Creating Signatures
+
 To get started, you need to acquire the the FLAIR toolkit from Hex-Rays'
 download-page. Extract it wherever you want and spawn a CMD in the newly created
 directory, then CD to bin\win. Let's assume you found out that your target
@@ -83,6 +85,8 @@ signature file! You now may apply zipsig on your signature file in order to
 compress it, however that's optional. Finally, copy your .sig file into
 sig-directory in the root of IDA's installation directory. You should now be
 able to apply your signature in IDA (CTRL + 1 -> Signatures -> INSERT).
+
+## Results
 
 Now, let's see how well it works when applied to a tiny game cheat I found in
 the web: a topic for another article.
