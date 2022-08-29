@@ -1,7 +1,16 @@
 ---
 layout: '@layouts/BlogPost.astro'
 title: 'Dumping packed executables using minidumps'
-description: "Bring your markdown, we'll handle the rest. Bring your markdown, we'll handle the rest. Bring your markdown, we'll handle the rest"
+description: >-
+    I'm using this method regularly for about a year now and found it to be very
+    reliable against most common packers that unpack the binary to memory while
+    being very convenient at the same time. Minidumps can be created
+    programmatically using MS' DbgHelp API or simply using a right-click on a
+    process in the task-manager. In case a packer would ever decide to detect the
+    minidump creation using, for example, a ring3 rootkit, you could still run the
+    target executable in a VM and cause a bluescreen to obtain a crash-dump (a few
+    additional steps would be required here). The obtained minidump can then be
+    processed for further analysis using WinDBG.
 pubDate: '15 Dec 2014'
 category: 'misc'
 author: 'joel'

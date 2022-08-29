@@ -1,7 +1,15 @@
 ---
 layout: '@layouts/BlogPost.astro'
 title: 'Identifying library code in statically linked binaries'
-description: 'To get started, you need to acquire the the FLAIR toolkit from Hex-Rays' download-page.'
+description: >-
+  I recently saw someone asking for a way to apply the .pdb file of a static
+  library to a binary that is using it. Even if that is probably possible with
+  some extra effort, there is a better way to achieve the same advantages without
+  the need to bother with .pdb files: IDA's FLIRT signature feature (Fast Library
+  Identification and Recognition Technology). While most IDA users are aware of
+  the fact that IDA uses to apply some sort of compiler specific signatures to
+  binaries, a lot of them don't know that you can generate these signature files
+  from any static library yourself without too much effort.
 pubDate: '1 Apr 2014'
 category: 'dev'
 author: 'joel'
