@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: http://www.zyantific.com/sitemap-index.xml
+Sitemap: https://zyantific.com/sitemap-index.xml
