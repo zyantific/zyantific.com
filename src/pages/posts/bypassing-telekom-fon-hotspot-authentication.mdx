@@ -12,6 +12,7 @@ heroImage:
   src: '/src/assets/blog/bypassing-telekom-fon2.png'
   alt: 'Telekom-Logo on Background'
 ---
+import { Picture } from '@astrojs/image/components';
 
 Today, while troubleshooting some network issues, I discovered one of those
 too-good-to-be-true vulnerabilities in my router.
@@ -26,7 +27,12 @@ All traffic seems to get tunneled through a bandwith-throttled proxy to some
 Telekom server to keep you out of trouble in case some dude decides to hack the
 NSA or something.
 
-![HotSpot Fon Radius](https://zyantific.com/assets/2017-02-17-bypassing-telekom-fon-hotspot-authentication/hotspotfonradius.png)
+<Picture 
+  src="./src/assets/blog/hotspotfonradius.png"
+  alt="Screenshot of the Speedport's hidden control panel, showing a list of what suspicously looks like regular expressions."
+  aspectRatio={1218 / 843} 
+  widths={[700, 1218]}
+/>
 
 ## All traffic?
 
@@ -51,7 +57,12 @@ corporate lawyer's trademark protection instincts. Near the end of the list, I
 found something matching these criteria: `^www.hotspot.de$`. Roughly an hour
 later, I was able to call myself the proud owner of `wwwxhotspot.de`.
 
-![wwwxhotspot.de](https://zyantific.com/assets/2017-02-17-bypassing-telekom-fon-hotspot-authentication/wwwxhotspot.png)
+<Picture 
+  src="./src/assets/blog/wwwxhotspot.png"
+  alt="Screenshot showing that the new domain is up and running"
+  aspectRatio={1018 / 109} 
+  widths={[700, 1018]}
+/>
 
 I fired up my laptop, established a connection to the hotspot, dismissed the
 login prompt and went on GitHub. Nothing, connection timeout, as expected. Next
@@ -59,12 +70,22 @@ up, my newly acquired domain. Works.
 
 ## Connection Established
 
-![Bypassed](https://zyantific.com/assets/2017-02-17-bypassing-telekom-fon-hotspot-authentication/bypassed.png)
+<Picture 
+  src="./src/assets/blog/bypassed.png"
+  alt="Screenshot showing that the firewall was successfully bypassed"
+  aspectRatio={1400 / 875} 
+  widths={[700, 1400]}
+/>
 
 Bypassing authentication oddly enough also appeared to bypass the hotspot's
 speed limit of 16 MBits.
 
-![Speedtest](https://zyantific.com/assets/2017-02-17-bypassing-telekom-fon-hotspot-authentication/speedtest.png)
+<Picture 
+  src="./src/assets/blog/speedtest.png"
+  alt="Screenshot of a speedtest showing 77Mbps of download"
+  aspectRatio={1514 / 822} 
+  widths={[700, 1514]}
+/>
 
 I obviously only tested this on my own router, VPN and domain and don't endorse
 any abuse of this vulnerability. Always double-check your RegExps, especially

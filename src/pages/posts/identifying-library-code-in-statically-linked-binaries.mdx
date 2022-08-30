@@ -18,6 +18,7 @@ heroImage:
   src: '/src/assets/blog/ident-library-code2.png'
   alt: 'F.L.I.R.T Text on Background'
 ---
+import { Picture } from '@astrojs/image/components';
 
 I recently saw someone asking for a way to apply the .pdb file of a static
 library to a binary that is using it. Even if that is probably possible with
@@ -91,8 +92,19 @@ able to apply your signature in IDA (CTRL + 1 -> Signatures -> INSERT).
 Now, let's see how well it works when applied to a tiny game cheat I found in
 the web: a topic for another article.
 
-![Before](https://zyantific.com/assets/2014-12-15-dumping-packed-executables-using-minidumps/before.png) 
-![After](https://zyantific.com/assets/2014-12-15-dumping-packed-executables-using-minidumps/after.png)
+<Picture 
+  src="./src/assets/blog/flirt-before.png"
+  alt="Before"
+  aspectRatio={412 / 20} 
+  widths={[412]}
+/>
+
+<Picture 
+  src="./src/assets/blog/flirt-after.png"
+  alt="After"
+  aspectRatio={411 / 19} 
+  widths={[411]}
+/>
 
 As seen above, generating and using signature files can save you a whole lot of
 reversing. There are also ways to automatically find library code in projects

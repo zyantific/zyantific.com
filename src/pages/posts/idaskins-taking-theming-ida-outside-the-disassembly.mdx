@@ -14,6 +14,7 @@ heroImage:
   src: '/src/assets/blog/idaskins-release2.png'
   alt: 'screenshots of IDASkins'
 ---
+import { Picture } from '@astrojs/image/components';
 
 A few months ago I wrote a tiny but fine plugin for IDA Pro allowing to theme
 everything that cannot be themed using IDA's built-in color-settings. It comes
@@ -23,10 +24,22 @@ find some information about creating themes on the GitHub project page.
 
 ## Screenshots
 
-![Disabled](https://zyantific.com/assets/2014-09-14-idaskins-taking-theming-ida-outside-the-disassembly/disabled.png)
+<Picture 
+  src="./src/assets/blog/idaskins-disabled.png"
+  alt="IDASkins plugin disabled"
+  aspectRatio={1920 / 1040} 
+  widths={[700, 1600]} 
+/>
+
 IDAPro with idaConsonance IDASkins disabled
 
-![Enabled](https://zyantific.com/assets/2014-09-14-idaskins-taking-theming-ida-outside-the-disassembly/enabled.png)
+<Picture 
+  src="./src/assets/blog/idaskins-enabled.png"
+  alt="IDASkins plugin enabled"
+  aspectRatio={1024 / 554} 
+  widths={[700, 1024]} 
+/>
+
 IDAPro with idaConsonance and IDASkins enabled
 
 ## Installation
